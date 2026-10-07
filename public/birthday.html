@@ -418,7 +418,8 @@
 </script>
 <script>
   const IST_OFFSET_MS = (5 * 60 + 30) * 60000;
-  const BIRTH_UTC_MS = Date.UTC(2006, 9, 8, 0, 0, 0);
+  // 18:30 UTC on Oct 7, 2006 == 00:00 IST on Oct 8, 2006
+  const BIRTH_UTC_MS = Date.UTC(2006, 9, 7, 18, 30, 0);
   const shiftedBirth = new Date(BIRTH_UTC_MS + IST_OFFSET_MS);
 
   function computeParts(){
@@ -450,15 +451,15 @@
   }
 
   const initial = computeParts();
-  const AGE = initial.years;
-  const DISPLAY_AGE = Math.max(0, AGE - 1);
+  const AGE = 20;
+  const DISPLAY_AGE = 19;
 
   document.getElementById('watermark').textContent = String(DISPLAY_AGE).padStart(2,'0');
 
   let revealed = false;
 
   function readout(p){
-    const shownYears = revealed ? p.years : DISPLAY_AGE;
+    const shownYears = revealed ? AGE : DISPLAY_AGE;
     return `${shownYears}y · ${p.days}d · ${String(p.hours).padStart(2,'0')}:${String(p.minutes).padStart(2,'0')}:${String(p.seconds).padStart(2,'0')}`;
   }
   document.getElementById('liveReadout').textContent = readout(initial);
