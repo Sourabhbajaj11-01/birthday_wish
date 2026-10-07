@@ -85,7 +85,7 @@ export default function LoveGallery() {
     >
       {images.map((img, index) => (
   <DraggableCardBody
-    key={img.src || img.imageUrl || index}
+    key={index}
     className={`
             absolute
             ${positions[index]}
