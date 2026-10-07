@@ -11,18 +11,6 @@ const handwriting = Caveat({
   weight: ["400", "500", "600", "700"],
 });
 
-// const images = [
-//   "/pipis/pipi3.jpg",
-//   "/pipis/pipi4.jpg",
-//   "/pipis/pipi5.jpg",
-//   "/pipis/pipi6.jpg",
-//   "/pipis/pipi7.jpg",
-//   // "/pipis/pipi8.jpg",
-//   "/pipis/pipi9.jpg",
-//   "/pipis/pipi10.jpg",
-//   "/pipis/pipi11.jpg",
-// ];
-
 const images = [
   { src: "/ref/IMG-20261007-WA0046.jpg" },
   { src: "/ref/IMG-20261007-WA0047.jpg" },
@@ -44,10 +32,13 @@ const captions = [
   "Pretty ✨",
   "My Love 🤍",
   "Sunshine ☀️",
-   "Angel 🪽",
+  "Angel 🪽",
   "Beautiful 🌸",
   "Dream Girl 💫",
   "Queen 👑",
+  "Icon 🌟",
+  "Stunner 💖",
+  "Sweetheart 🍯",
 ];
 
 const positions = [
@@ -60,6 +51,9 @@ const positions = [
   "bottom-[10%] left-[18%] rotate-[-10deg]",
   "bottom-[12%] left-[45%] rotate-[5deg]",
   "bottom-[8%] right-[15%] rotate-[-7deg]",
+  "top-[25%] left-[25%] rotate-[-4deg]",
+  "top-[30%] right-[25%] rotate-[8deg]",
+  "bottom-[25%] left-[30%] rotate-[-3deg]",
 ];
 
 export default function LoveGallery() {
@@ -84,11 +78,11 @@ export default function LoveGallery() {
       "
     >
       {images.map((img, index) => (
-  <DraggableCardBody
-    key={index}
-    className={`
+        <DraggableCardBody
+          key={index}
+          className={`
             absolute
-            ${positions[index]}
+            ${positions[index % positions.length]}
             bg-white
             rounded-xl
             shadow-2xl
@@ -104,8 +98,8 @@ export default function LoveGallery() {
         >
           <div className="relative overflow-visible">
             <img
-              src={img}
-              alt={img}
+              src={img.src}
+              alt={`Photo ${index + 1}`}
               draggable={false}
               className="
                 h-56
@@ -142,7 +136,7 @@ export default function LoveGallery() {
                 pointer-events-none
               `}
             >
-              {captions[index]}
+              {captions[index % captions.length]}
             </p>
           </div>
         </DraggableCardBody>
