@@ -22,7 +22,9 @@ const imgs = [
   { src: "/ref/IMG-20261007-WA0037.jpg" },
   { src: "/ref/IMG-20261007-WA0040.jpg" },
   { src: "/ref/IMG-20261007-WA0045.jpg" },
-
+  { src: "/ref/IMG-20261007-WA0055.jpg" },
+  { src: "/ref/IMG-20261007-WA0051.jpg" },
+  { src: "/ref/IMG-20261007-WA0053.jpg" },
   
 ];
 
