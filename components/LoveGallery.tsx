@@ -84,9 +84,9 @@ export default function LoveGallery() {
       "
     >
       {images.map((img, index) => (
-        <DraggableCardBody
-          key={img}
-          className={`
+  <DraggableCardBody
+    key={img.src || img.imageUrl || index}
+    className={`
             absolute
             ${positions[index]}
             bg-white
