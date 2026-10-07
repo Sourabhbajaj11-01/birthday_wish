@@ -23,12 +23,7 @@ const imgs = [
   { src: "/ref/IMG-20261007-WA0045.jpg" },
   { src: "/ref/IMG_20261007_234329_490.jpg" },
   { src: "/ref/IMG_20261007_234331_926.jpg" },
-  { src: "/ref/IMG_20260905_012729_153.jpg" },
-  { src: "/ref/IMG_20260905_011945_586.jpg" },
-  { src: "/ref/IMG_20260822_222429_096.jpg" },
-  { src: "/ref/IMG_20260821_232045_974.jpg" },
-  { src: "/ref/IMG_20260821_232011_220.jpg" },
-  { src: "/ref/IMG_20260629_005714_488.jpg" },
+  
 ];
 
 export const HeroSection = () => {
