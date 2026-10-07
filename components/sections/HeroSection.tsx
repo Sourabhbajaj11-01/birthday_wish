@@ -8,18 +8,20 @@ const path =
 
 // Local photos from /public/ref — resolve to /ref/*.jpg at runtime.
 const imgs = [
-  { src: "/ref/heart.jpg" },
-  { src: "/ref/girl.jpg" },
-  { src: "/ref/girl2.jpg" },
-  { src: "/ref/girl3.jpg" },
-  { src: "/ref/girl4.jpg" },
-  { src: "/ref/girl5.jpg" },
-  { src: "/ref/girl6.jpg" },
-  { src: "/ref/girl7.jpg" },
-  { src: "/ref/girl8.jpg" },
-  { src: "/ref/girl9.jpg" },
-  { src: "/ref/girl10.jpg" },
-  { src: "/ref/girl11.jpg" },
+  { src: "/ref/IMG-20261007-WA0015.jpg" },
+  { src: "/ref/IMG-20261007-WA0016.jpg" },
+  { src: "/ref/IMG-20261007-WA0018.jpg" },
+  { src: "/ref/IMG-20261007-WA0027.jpg" },
+  { src: "/ref/IMG-20261007-WA0031.jpg" },
+  { src: "/ref/IMG-20261007-WA0033.jpg" },
+  { src: "/ref/IMG-20261007-WA0034.jpg" },
+  { src: "/ref/IMG-20261007-WA0035.jpg" },
+  { src: "/ref/IMG-20261007-WA0036.jpg" },
+  { src: "/ref/IMG-20261007-WA0037.jpg" },
+  { src: "/ref/IMG-20261007-WA0040.jpg" },
+  { src: "/ref/IMG-20261007-WA0045.jpg" },
+  { src: "/ref/IMG_20261007_234329_490.jpg" },
+  { src: "/ref/IMG_20261007_234331_926.jpg" },
 ];
 
 export const HeroSection = () => {
