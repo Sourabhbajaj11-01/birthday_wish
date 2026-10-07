@@ -8,6 +8,7 @@ const path =
 
 // Local photos from /public/ref — resolve to /ref/*.jpg at runtime.
 const imgs = [
+  // First batch
   { src: "/ref/IMG-20261007-WA0015.jpg" },
   { src: "/ref/IMG-20261007-WA0016.jpg" },
   { src: "/ref/IMG-20261007-WA0018.jpg" },
@@ -22,6 +23,19 @@ const imgs = [
   { src: "/ref/IMG-20261007-WA0045.jpg" },
   { src: "/ref/IMG_20261007_234329_490.jpg" },
   { src: "/ref/IMG_20261007_234331_926.jpg" },
+  { src: "/ref/IMG_20260905_012729_153.jpg" },
+  { src: "/ref/IMG_20260905_011945_586.jpg" },
+  { src: "/ref/IMG_20260822_222429_096.jpg" },
+  { src: "/ref/IMG_20260821_232045_974.jpg" },
+  { src: "/ref/IMG_20260821_232011_220.jpg" },
+  { src: "/ref/IMG_20260629_005714_488.jpg" },
+  { src: "/ref/IMG_20260819_161208_139.jpg" },
+  { src: "/ref/IMG_20260305_185622_686.jpg" },
+  { src: "/ref/IMG_20260416_004531_904.jpg" },
+  { src: "/ref/IMG_20260305_185559_533.jpg" },
+  { src: "/ref/IMG_20260303_001003_334.jpg" },
+  { src: "/ref/IMG_20260304_232520_303.jpg" },
+  { src: "/ref/IMG_20260305_185554_434.jpg" },
 ];
 
 export const HeroSection = () => {
