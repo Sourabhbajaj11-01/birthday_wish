@@ -44,7 +44,7 @@ const captions = [
   "Pretty ✨",
   "My Love 🤍",
   "Sunshine ☀️",
-  // "Angel 🪽",
+   "Angel 🪽",
   "Beautiful 🌸",
   "Dream Girl 💫",
   "Queen 👑",
