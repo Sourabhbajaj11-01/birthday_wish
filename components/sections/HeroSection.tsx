@@ -21,8 +21,8 @@ const imgs = [
   { src: "/ref/IMG-20261007-WA0037.jpg" },
   { src: "/ref/IMG-20261007-WA0040.jpg" },
   { src: "/ref/IMG-20261007-WA0045.jpg" },
-  { src: "/ref/IMG_20261007_234329_490.jpg" },
-  { src: "/ref/IMG_20261007_234331_926.jpg" },
+  { src: "WhatsApp Image 2026-10-08 at 12.29.08 AM.jpeg" },
+  { src: "WhatsApp Image 2026-10-08 at 12.29.07 AM.jpeg" },
   
 ];
 
