@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Birthday</title>
+<title>Birthday - Sejall</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -33,7 +33,7 @@
     width:100%;
     height:100%;
     object-fit:cover;
-    opacity:0; /* animated in by GSAP, capped well below 100% so the number stays readable over it */
+    opacity:0;
     transform:scale(1.18);
     filter:saturate(0.9) brightness(0.4) blur(18px);
     will-change:transform, filter, opacity;
@@ -385,11 +385,6 @@
     <span class="reveal-flash" id="revealFlash"></span>
   </button>
 
-  <!-- <div class="press-prompt" id="pressPrompt">
-    <span class="ring"></span>
-    <span>press to release</span>
-  </div> -->
-
   <span class="corner br" id="liveReadout">—</span>
 </div>
 
@@ -422,16 +417,11 @@
   window.__balloonsJS = { balloons, textBalloons };
 </script>
 <script>
-  // ---- EDIT THIS: real birth date/time, given in IST (India Standard Time) ----
-  // 14:30 IST on Aug 2, 2003 == 09:00 UTC on Aug 2, 2003  (birth year set so the reveal lands on 23)
   const IST_OFFSET_MS = (5 * 60 + 30) * 60000;
-  // const BIRTH_UTC_MS = Date.UTC(2003, 7, 2, 9, 0, 0);
   const BIRTH_UTC_MS = Date.UTC(2003, 7, 4, 18, 30, 0);
-  const shiftedBirth = new Date(BIRTH_UTC_MS + IST_OFFSET_MS); // read with getUTC* for IST wall-clock parts
+  const shiftedBirth = new Date(BIRTH_UTC_MS + IST_OFFSET_MS);
 
   function computeParts(){
-    // shift "now" into the same IST-wall-clock domain so getUTC* reads IST time
-    // regardless of the viewer's own device timezone
     const shiftedNow = new Date(Date.now() + IST_OFFSET_MS);
 
     const by = shiftedBirth.getUTCFullYear();
@@ -465,20 +455,14 @@
 
   document.getElementById('watermark').textContent = String(DISPLAY_AGE).padStart(2,'0');
 
-  // declared here (not further down) so the very first readout() call below
-  // can safely reference it
   let revealed = false;
 
   function readout(p){
-    // before the burn reveal, the watermark intentionally shows one year
-    // less (DISPLAY_AGE) as part of the reveal effect - the ticker must
-    // match that number, or it looks like the clock is wrong
     const shownYears = revealed ? p.years : DISPLAY_AGE;
     return `${shownYears}y · ${p.days}d · ${String(p.hours).padStart(2,'0')}:${String(p.minutes).padStart(2,'0')}:${String(p.seconds).padStart(2,'0')}`;
   }
   document.getElementById('liveReadout').textContent = readout(initial);
 
-  // ---------------- press-to-release trigger ----------------
   const triggerBtn = document.getElementById('triggerBtn');
   const watermarkEl = document.getElementById('watermark');
   const emberLayer = document.getElementById('emberLayer');
@@ -489,8 +473,6 @@
   let burning = false;
   let balloonsJSFired = false;
 
- 
-
   function fireBalloonsJS(){
     if(balloonsJSFired) return;
     balloonsJSFired = true;
@@ -498,16 +480,12 @@
       const { balloons, textBalloons } = window.__balloonsJS;
       balloons();
       textBalloons([
-        { text: "Happy Birthday", fontSize: 120, color: "#ffffff" },
+        { text: "Happy Birthday Sejall", fontSize: 120, color: "#ffffff" },
         { text: "🎉🎂🎈", fontSize: 120, color: "#ffffff" },
       ]);
     }
   }
 
-  // brings a background photo in behind the burned number once it's revealed -
-  // eases in from a soft, zoomed, blurred state into a settled frame, capped
-  // well under full opacity so the number and the photo both stay legible
-  // together instead of one washing out the other
   const BG_REVEAL_SRC = '/bg2.jpg';
   const BG_MAX_OPACITY = 0.85;
   function revealBackground(){
@@ -523,7 +501,6 @@
         duration:2.6,
         ease:'power3.out',
         onComplete: () => {
-          // slow ambient drift once it's settled in, like a living photo
           gsap.to(bgRevealImg, {
             scale:1.08,
             duration:22,
@@ -540,7 +517,7 @@
     const e = document.createElement('div');
     e.className = 'ember';
     const sz = (3 + Math.random()*7) * (0.7 + intensity*0.6);
-    const hue = 22 + Math.random()*32; // 22=red-orange .. 54=yellow
+    const hue = 22 + Math.random()*32;
     e.style.background = `radial-gradient(circle, hsla(${hue+18},100%,88%,1) 0%, hsla(${hue},100%,58%,1) 55%, transparent 80%)`;
     e.style.boxShadow = `0 0 ${sz*2.2}px hsla(${hue},100%,60%,${0.55*intensity})`;
     e.style.left = x + 'px';
@@ -550,8 +527,6 @@
     e.style.opacity = '0.95';
     emberLayer.appendChild(e);
 
-    // manual turbulent path: embers don't just fly straight up, real sparks
-    // wobble and curl as they cool, with the sway growing then settling
     const dur = 0.85 + Math.random()*0.7;
     const riseDist = 50 + Math.random()*95;
     const swayAmp = 10 + Math.random()*20;
@@ -667,8 +642,6 @@
     const src = ctx.getImageData(0, 0, W, H);
     const srcData = src.data;
 
-    // precompute a sweeping burn threshold per pixel: bottom ignites first,
-    // perturbed by layered value-noise so the front looks organic, not straight
     const threshold = new Float32Array(W * H);
     for(let y = 0; y < H; y++){
       const sweep = 1 - (y / H);
@@ -690,7 +663,7 @@
     const out = ctx.createImageData(W, H);
     const outData = out.data;
     const EDGE = 0.16;
-    const DECAY = 0.55; // how long charred embers glow/cool before turning to ash
+    const DECAY = 0.55;
     const state = {p: -0.35};
     let lastEmberTime = 0;
     let lastSmokeTime = 0;
@@ -711,8 +684,6 @@
       onUpdate: () => {
         const tRaw = (performance.now() - t0) * 0.001;
         const t = tRaw * 6;
-        // real fire doesn't advance at a perfectly steady rate - add a gentle
-        // non-monotonic wobble so the front seems to catch and gutter
         const pDisplay = state.p + Math.sin(tRaw*2.6) * 0.012 + Math.sin(tRaw*5.3+1) * 0.006;
 
         for(let y = 0; y < H; y++){
@@ -733,8 +704,7 @@
             if(d < -EDGE - DECAY){
               outData[o+3] = 0;
             } else if(d < -EDGE){
-              // afterglow: charred pixel cools from ember-red to black, then dissolves
-              const k = (-EDGE - d) / DECAY; // 0 = just crossed ignition, 1 = fully spent
+              const k = (-EDGE - d) / DECAY;
               if(k < 0.45){
                 const k2 = k / 0.45;
                 outData[o]   = Math.round(255*(1-k2) + 100*k2);
@@ -749,7 +719,7 @@
                 outData[o+3] = Math.round(255*(1-k2));
               }
             } else if(d < EDGE){
-              const k2 = (d + EDGE) / (2*EDGE); // 0 = just charred, 1 = about to ignite
+              const k2 = (d + EDGE) / (2*EDGE);
               if(k2 < 0.45){
                 const k = k2 / 0.45;
                 outData[o] = Math.round(12 + k*(255-12));
@@ -771,7 +741,6 @@
         }
         ctx.putImageData(out, 0, 0);
 
-        // subtle heat-shimmer jitter on the canvas itself while actively burning
         const p = pDisplay;
         if(p > -0.15 && p < 1.3){
           const jitter = (1 - Math.min(1, Math.abs(p - 0.5)*1.3)) * 1.3;
@@ -823,8 +792,6 @@
         {scale:7.5, opacity:0, duration:1.3, ease:'power2.out'}
       );
 
-      // the number itself blooms in solid white - starts soft/blurred/zoomed
-      // out of the ember afterglow, then settles sharp with a brief warm glow
       gsap.fromTo(watermarkEl,
         { opacity:0, scale:0.8, filter:'blur(22px)', color:'#fff' },
         { opacity:1, scale:1, filter:'blur(0px)', duration:1.4, ease:'expo.out' }
@@ -850,24 +817,20 @@
 
   triggerBtn.addEventListener('click', burnAndRelease);
 
-
-
-  //play music on button click
   triggerBtn.addEventListener('click', () => {
-  if (bgMusic.paused) {
-    bgMusic.play().catch(() => {}); // catch autoplay-policy rejection silently
-    musicPlayer.classList.add('is-visible', 'is-playing');
-  }
-}, { once: true }); // only trigger the first press/burn
+    if (bgMusic.paused) {
+      bgMusic.play().catch(() => {});
+      musicPlayer.classList.add('is-visible', 'is-playing');
+    }
+  }, { once: true });
 
-  // ---------------- intro: odometer-style roll into the number, then zoom through ----------------
   const introNum = document.getElementById('introNum');
   introNum.textContent = '';
 
   const finalDigits = String(DISPLAY_AGE).split('');
   const cols = finalDigits.map((chr, idx) => {
     const target = parseInt(chr, 10);
-    const loops = 1 + idx; // each column further right spins through more full loops
+    const loops = 1 + idx;
     const colWrap = document.createElement('div');
     colWrap.className = 'od-col';
     const strip = document.createElement('div');
@@ -885,7 +848,6 @@
     return {strip, target, loops};
   });
 
-  // measure one rendered digit's height so the roll distance is exact, not guessed
   const digitH = cols.length ? cols[0].strip.querySelector('.od-digit').getBoundingClientRect().height : 0;
 
   const tl = gsap.timeline();
@@ -910,7 +872,7 @@
     }, 0);
   });
 
-  tl.to({}, {duration: 0.35}) // brief hold on the final number once every column has landed
+  tl.to({}, {duration: 0.35})
     .to('#introNum', {
       scale: 24,
       opacity: 0,
@@ -925,17 +887,14 @@
     .to('#pressPrompt', {opacity:1, duration:0.7, ease:'power2.out'}, '<0.2')
     .set('#pressPrompt', {pointerEvents:'auto'})
     .call(() => {
-      // reveal the mini player once the intro sequence has resolved
       document.getElementById('musicPlayer').classList.add('is-visible');
     }, null, '<');
 
-  // ---------------- live readout tick ----------------
   setInterval(() => {
     const p = computeParts();
     document.getElementById('liveReadout').textContent = readout(p);
   }, 1000);
 
-  // ---------------- spotify-style mini player controls ----------------
   const bgMusic = document.getElementById('bgMusic');
   const musicPlayer = document.getElementById('musicPlayer');
   const playPauseBtn = document.getElementById('playPauseBtn');
@@ -988,16 +947,13 @@
     seeking = false;
   });
 
-  // browsers block un-prompted audio autoplay - attempt it, and otherwise
-  // let the mini player's play button be the first user gesture that starts it
   bgMusic.play().catch(() => {});
 
-  // ---------------- player art: crossfade through pipis/pipi1.jpg..pipi13.jpg ----------------
   const PIPI_COUNT = 10;
   const pipiSrc = (n) => `/ref/girl${n}.jpg`;
   const artA = document.getElementById('artA');
   const artB = document.getElementById('artB');
-  let pipiIndex = 1; // artA currently shows pipi1
+  let pipiIndex = 1;
   let showingA = true;
 
   setInterval(() => {
@@ -1011,8 +967,6 @@
     showingA = !showingA;
   }, 3200);
 </script>
-
-
 
 </body>
 </html>
