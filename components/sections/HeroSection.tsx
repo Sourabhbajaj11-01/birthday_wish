@@ -22,25 +22,6 @@ const imgs = [
   { src: "/ref/girl11.jpg" },
 ];
 
-// const imgs = [
-//   { src: "/pipis/pipi1.jpg" },
-//   { src: "/pipis/pipi2.jpg" },
-//   { src: "/pipis/pipi3.jpg" },
-//   { src: "/pipis/pipi4.jpg" },
-//   { src: "/pipis/pipi5.jpg" },
-//   { src: "/pipis/pipi6.jpg" },
-//   { src: "/pipis/pipi7.jpg" },
-//   { src: "/pipis/pipi8.jpg" },
-//   { src: "/pipis/pipi9.jpg" },
-//   { src: "/pipis/pipi10.jpg" },
-//   { src: "/pipis/pipi11.jpg" },
-//   { src: "/pipis/pipi12.jpg" },
-//   { src: "/pipis/pipi13.jpg" },
-//   { src: "/pipis/pipi14.jpg" },
-// ];
-
-
-
 export const HeroSection = () => {
   return (
     <section className="relative overflow-hidden flex min-h-screen w-full flex-col overflow-x-hidden bg-[#FAFAF7]">
@@ -58,13 +39,12 @@ export const HeroSection = () => {
         }
       `}</style>
 
-      {/* Top row: quiet date stamp, nothing else competing for attention */}
+      {/* Top row: quiet date stamp */}
       <div className="hero-mono flex items-center justify-between px-8 pt-8 text-[11px] uppercase tracking-[0.25em] text-[#8A8A80] sm:px-14">
         <span>Aug 5</span>
-        {/* <span>One more lap</span> */}
       </div>
 
-      {/* Headline — centered in the upper half, generous but not stretched to fill the screen */}
+      {/* Headline */}
       <div className="px-8 pt-16 sm:px-14 sm:pt-20">
         <h1 className="hero-display text-[15vw] leading-[0.86] tracking-tight text-[#14140F] sm:text-7xl lg:text-8xl">
           <span className="font-light">Happy</span>
@@ -75,11 +55,11 @@ export const HeroSection = () => {
         </h1>
         <div className="mt-6 h-px w-16 bg-[#9C7A3F]" />
         <p className="hero-body mt-6 max-w-sm text-base leading-relaxed text-[#4A4A42]">
-       wishing you a day filled with love, laughter, and all the happiness your heart can hold. May this year bring you endless joy and unforgettable memories. Happy Birthday!
+          wishing you a day filled with love, laughter, and all the happiness your heart can hold. May this year bring you endless joy and unforgettable memories. Happy Birthday!
         </p>
       </div>
 
-      {/* The trail — moved up under the headline, full-bleed edge to edge, tilted */}
+      {/* The trail */}
       <div className=" absolute top-50 left-1/2 mt-0 w-screen -rotate-10 -translate-x-1/2 ">
         <MarqueeAlongSvgPath
           path={path}
@@ -115,7 +95,7 @@ export const HeroSection = () => {
         </MarqueeAlongSvgPath>
       </div>
 
-      {/* Remaining space stays quiet on purpose — a hairline and a small mark, nothing more */}
+      {/* Remaining space */}
       <div className="mt-auto flex items-center justify-between px-8 pb-8 sm:px-14">
         <div className="h-px flex-1 bg-[#14140F]/10" />
         <span className="hero-mono px-4 text-[10px] uppercase tracking-[0.25em] text-[#8A8A80]">
