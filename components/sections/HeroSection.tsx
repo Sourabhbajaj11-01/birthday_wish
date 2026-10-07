@@ -8,7 +8,8 @@ const path =
 
 // Local photos from /public/ref — resolve to /ref/*.jpg at runtime.
 const imgs = [
-  // First batch
+  { src: "WhatsApp Image 2026-10-08 at 12.29.08 AM.jpeg" },
+  { src: "WhatsApp Image 2026-10-08 at 12.29.07 AM.jpeg" },
   { src: "/ref/IMG-20261007-WA0015.jpg" },
   { src: "/ref/IMG-20261007-WA0016.jpg" },
   { src: "/ref/IMG-20261007-WA0018.jpg" },
@@ -21,8 +22,7 @@ const imgs = [
   { src: "/ref/IMG-20261007-WA0037.jpg" },
   { src: "/ref/IMG-20261007-WA0040.jpg" },
   { src: "/ref/IMG-20261007-WA0045.jpg" },
-  { src: "WhatsApp Image 2026-10-08 at 12.29.08 AM.jpeg" },
-  { src: "WhatsApp Image 2026-10-08 at 12.29.07 AM.jpeg" },
+
   
 ];
 
